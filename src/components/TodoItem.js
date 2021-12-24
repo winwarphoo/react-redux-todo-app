@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { deleteTodo } from '../actions/todoAction';
 
 class TodoItem extends React.Component {
   deleteTodo(index) {
@@ -17,4 +19,10 @@ class TodoItem extends React.Component {
   }
 }
 
-export default TodoItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    del: (index) => dispatch(deleteTodo(index))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(TodoItem);

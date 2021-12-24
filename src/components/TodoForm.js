@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { addTodo } from '../actions/todoAction'
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -37,4 +39,10 @@ class TodoForm extends React.Component {
   }
 }
 
-export default TodoForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add: (text) => dispatch(addTodo(text))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(TodoForm);
